@@ -34,10 +34,10 @@ if __name__ == '__main__':
     parse = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parse.add_argument("--models", type=list, default=['iresnet34','iresnet34','iresnet50','iresnet50']) 
     parse.add_argument("--backbone_paths", type=list, default=['../models/253682backbone.pth','../models/417378backbone.pth','../models/253682backbone(1).pth','../models/417378backbone(1).pth'])   #must match len with models
-    parse.add_argument('--data_path',type=str, default="../../Datasets/RFW/test_aligned/data/African/")
+    parse.add_argument('--data_path',type=str, default="../../../Datasets/RFW/test_aligned/data/African/")
     parse.add_argument("--ethnicity",type=str, default="African")
     parse.add_argument("--dataset_name",type=str, default="RFW")
-    parse.add_argument("--pairs_path", type=str, default="../../Work/Datasets/RFW/txts/African/African_pairs.txt") 
+    parse.add_argument("--pairs_path", type=str, default="../../../Datasets/RFW/txts/African/African_pairs.txt") 
     args = parse.parse_args()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
