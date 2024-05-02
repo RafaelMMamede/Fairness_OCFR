@@ -1,20 +1,17 @@
-import os
-import argparse
 import torch 
 from torchvision import transforms
 from PIL import Image
 import numpy as np
 import json 
 import sys 
-sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
-import cv2
-from backbones.iresnet import iresnet34, iresnet50
-
 from scipy.optimize import brentq
 from scipy.interpolate import interp1d
 from sklearn.metrics import roc_curve
 import sklearn as sk
 
+
+sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
+from backbones.iresnet import iresnet34, iresnet50 # type: ignore
 
 def create_model(model,path,device):
     """
