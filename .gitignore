@@ -165,5 +165,5 @@ cython_debug/
 
 
 #specific files 
-./notebooks/evaluate_results.ipynb
-./notebooks/pyeer_report.csv
+evaluate_results.ipynb
+pyeer_report.csv
