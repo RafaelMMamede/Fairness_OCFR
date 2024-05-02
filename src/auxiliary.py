@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 import json 
 import sys 
-from scipy.optimize import brentq
+from scipy.optimize import brentq, dual_annealing
 from scipy.interpolate import interp1d
 from sklearn.metrics import roc_curve
 import sklearn as sk
@@ -101,3 +101,40 @@ def EER_th(matches,similarity_prediction):
 
     thresh = interp1d(fpr, thresholds)(eer)
     return thresh
+
+
+def DAccSTD(th,matches,similarity_prediction,group_list):
+    """
+    Get accuracy minus std between groups
+    :param th: threshold for classification
+    :param matches:  true labels
+    :param similarity_predictions: cossine similarity between embeddings
+    :param group_list: list with information regarding to which group each prediction is part of
+    """
+    pred_label = np.where(similarity_prediction>=th,1,0)
+    global_acc = sk.metrics.accuracy_score(matches, pred_label)
+    
+    group_list =np.array(group_list)
+    unique_labels = np.unique(group_list)
+    group_acc = []
+
+    for label in unique_labels:
+        indexes  = np.where(group_list == label)[0]
+
+        group_acc.append(sk.metrics.accuracy_score(matches[indexes], pred_label[indexes]))
+
+    return global_acc - np.std(group_acc)
+
+
+
+
+def DAccSTD_th(matches,similarity_prediction,group_list):
+    """
+    Get Threshold that maximizes accuracy minus std between groups. Requires DAccSTD.
+    :param matches:  true labels
+    :param similarity_predictions: cossine similarity between embeddings
+    :param group_list: list with information regarding to which group each prediction is part of
+    """
+    result = dual_annealing(lambda th: -1*DAccSTD(th, matches=matches,similarity_prediction=similarity_prediction,group_list=group_list), bounds=list(zip([0.], [1.])))
+    print(result)
+    return result.x
