@@ -162,3 +162,8 @@ cython_debug/
 
 #slurm stuff
 *.sh
+
+
+#specific files 
+./notebooks/evaluate_results.ipynb
+./notebooks/pyeer_report.csv
