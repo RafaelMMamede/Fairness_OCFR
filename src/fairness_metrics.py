@@ -150,7 +150,7 @@ def Garbe_Aux_Gini(X):
 def GARBE(y_true,y_out, sensitive_features, threshold,alpha=0.5):
     
     """
-    FDR @ Given threshhold (https://arxiv.org/pdf/2402.01472.pdf)
+    GARBE @ Given threshhold (https://arxiv.org/pdf/2402.01472.pdf)
     :param y_true:  true labels
     :param y_out: cossine similarity between embeddings, prediction before thresholding
     :param sensitive_features: sensitive attributes
