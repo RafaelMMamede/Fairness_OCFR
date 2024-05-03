@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import sklearn as sk
 import fairlearn as fair   # type: ignore
+from fairlearn import metrics # type: ignore
 from auxiliary import open_results, EER_th, DAccSTD_th
 from fairness_metrics import FDR, GARBE, IR
 import logging
