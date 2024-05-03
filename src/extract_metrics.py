@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parse.add_argument("--loging_path", type=str,default ='./extractmetrics.log')
     args = parse.parse_args()
 
-    logging.basicConfig(filename=args.loging_path,level=logging.INFO)
+    logging.basicConfig(filename=args.loging_path,level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     #static variables
     ethnicities = ['African', 'Asian','Caucasian','Indian']
