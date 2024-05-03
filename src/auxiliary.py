@@ -8,6 +8,7 @@ from scipy.optimize import brentq, dual_annealing
 from scipy.interpolate import interp1d
 from sklearn.metrics import roc_curve
 import sklearn as sk
+import logging
 
 
 sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
@@ -136,5 +137,5 @@ def DAccSTD_th(matches,similarity_prediction,group_list):
     :param group_list: list with information regarding to which group each prediction is part of
     """
     result = dual_annealing(lambda th: -1*DAccSTD(th, matches=matches,similarity_prediction=similarity_prediction,group_list=group_list), bounds=list(zip([0.], [1.])))
-    print(result)
+    logging.info(result)
     return result.x
