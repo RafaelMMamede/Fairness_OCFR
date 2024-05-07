@@ -31,7 +31,7 @@ class ExtendediResNet34(nn.Module):
     
 class ExtendediResNet50(nn.Module):
     def __init__(self,state_dict):
-        super(ExtendediResNet34, self).__init__()
+        super(ExtendediResNet50, self).__init__()
         self.original = iresnet50()
         self.original.load_state_dict(state_dict,strict=True)
         self.cosine_layer = nn.Linear(512, 1,bias=False) 
@@ -40,6 +40,25 @@ class ExtendediResNet50(nn.Module):
         x = self.original(x)  # Pass input through the original ResNet
         x = self.cosine_layer(x)
         return x
+
+
+def create_model_extended(model,path,device):
+    """
+    Creates extended model (for xSSAB) from:
+    :param model: type of model structure in {'iresnet34','iresnet50'}
+    :param path: path to model backbone
+    :param device: device on which to run the model
+    """
+
+    state_dict = torch.load(path)
+
+    if model == 'iresnet34':
+        loaded_model = ExtendediResNet34(state_dict)
+    if model == 'iresnet50':
+        loaded_model = ExtendediResNet50(state_dict)
+    
+    loaded_model = loaded_model.to(device)
+    return loaded_model
 
 
 
