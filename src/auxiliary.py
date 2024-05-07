@@ -14,6 +14,34 @@ import logging
 sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
 from backbones.iresnet import iresnet34, iresnet50 # type: ignore
 
+
+
+class ExtendediResNet34(nn.Module):
+    def __init__(self,state_dict):
+        super(ExtendediResNet34, self).__init__()
+        self.original = iresnet34()
+        self.original.load_state_dict(state_dict,strict=True)
+        self.cosine_layer = nn.Linear(512, 1,bias=False) 
+
+    def forward(self, x):
+        x = self.original(x)  # Pass input through the original ResNet
+        x = self.cosine_layer(x)
+        return x
+    
+class ExtendediResNet50(nn.Module):
+    def __init__(self,state_dict):
+        super(ExtendediResNet34, self).__init__()
+        self.original = iresnet50()
+        self.original.load_state_dict(state_dict,strict=True)
+        self.cosine_layer = nn.Linear(512, 1,bias=False) 
+
+    def forward(self, x):
+        x = self.original(x)  # Pass input through the original ResNet
+        x = self.cosine_layer(x)
+        return x
+
+
+
 def create_model(model,path,device):
     """
     Creates model from:
@@ -55,7 +83,7 @@ def preprocess_image(image_path):
 def open_results(dataset):
     """
     Get dictionary with similarities and array of matches
-    :param dataset (str): Dataset from which to get results. From RFW, RFW_unaligned, RFW_protocolo1, RFW_protocolo1_unaligned, RFW_protocolo4, RFW_protocolo4_unaligned
+    :param dataset (str): Dataset from which to get results. From RFW, RFW_unaligned, RFW0_RFW1, RFW0_RFW4, RFW_protocolo1, RFW_protocolo1_unaligned, RFW_protocolo4, RFW_protocolo4_unaligned
     """
     ethnicities = ['African', 'Asian','Caucasian','Indian']
     similarities = {}
