@@ -99,7 +99,7 @@ if __name__ == '__main__':
                 combi = gradient_1_2_pos - gradient_1_2_neg
 
                 #save results
-                np.save("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] + "/" + str(j)+'.npy' ,combi.numpy())
+                np.save("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] + "/" + str(j)+'.npy' ,combi)
 
 
 
