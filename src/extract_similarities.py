@@ -34,7 +34,8 @@ if __name__ == '__main__':
     parse = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parse.add_argument("--models", type=list, default=['iresnet34','iresnet34','iresnet50','iresnet50']) 
     parse.add_argument("--backbone_paths", type=list, default=['../models/253682backbone.pth','../models/417378backbone.pth','../models/253682backbone(1).pth','../models/417378backbone(1).pth'])   #must match len with models
-    parse.add_argument('--data_path',type=str, default="../../../Datasets/RFW/test_aligned/data/African/")
+    parse.add_argument('--data_path_L',type=str, default="../../../Datasets/RFW/test_aligned/data/African/") #LEFT IMAGE
+    parse.add_argument('--data_path_R',type=str, default="../../../Datasets/RFW/test_aligned/data/African/") #RIGHT IMAGE
     parse.add_argument("--ethnicity",type=str, default="African")
     parse.add_argument("--dataset_name",type=str, default="RFW")
     parse.add_argument("--pairs_path", type=str, default="../../../Datasets/RFW/txts/African/African_pairs.txt") 
@@ -67,8 +68,8 @@ if __name__ == '__main__':
                 ind = line_list[0]  #individual
 
 
-                im1 = preprocess_image(args.data_path + ind + '/'+ind+'_000'+line_list[1]+'.jpg').to(device)
-                im2 = preprocess_image(args.data_path + ind + '/'+ind+'_000'+line_list[2]+'.jpg').to(device)
+                im1 = preprocess_image(args.data_path_L + ind + '/'+ind+'_000'+line_list[1]+'.jpg').to(device)
+                im2 = preprocess_image(args.data_path_R + ind + '/'+ind+'_000'+line_list[2]+'.jpg').to(device)
                 for i in range(len(args.models)):
                     similarity[args.models[i]+'_'+args.backbone_paths[i]].append(np.float64(get_cossine_sim(im1,im2, resnets[i]).cpu().numpy()[0]))
                 matches.append(1)
@@ -77,8 +78,8 @@ if __name__ == '__main__':
             if len(line_list)==4: #non matching faces
                 ind1, ind2 = line_list[0], line_list[2]
 
-                im1 = preprocess_image(args.data_path + ind1 + '/'+ind1+'_000'+line_list[1]+'.jpg').to(device)
-                im2 = preprocess_image(args.data_path + ind2 + '/'+ind2+'_000'+line_list[3]+'.jpg').to(device)
+                im1 = preprocess_image(args.data_path_L + ind1 + '/'+ind1+'_000'+line_list[1]+'.jpg').to(device)
+                im2 = preprocess_image(args.data_path_R + ind2 + '/'+ind2+'_000'+line_list[3]+'.jpg').to(device)
                 for i in range(len(args.models)):
                     similarity[args.models[i]+'_'+args.backbone_paths[i]].append(np.float64(get_cossine_sim(im1,im2, resnets[i]).cpu().numpy()[0]))
                 matches.append(0)
