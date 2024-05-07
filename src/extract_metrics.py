@@ -27,10 +27,10 @@ if __name__ == '__main__':
     parse.add_argument("--threshold", type=str, default = 'DAccStd')
     parse.add_argument("--datasets", type=list, default = ['RFW','RFW0_RFW1','RFW0_RFW4','RFW_protocolo1','RFW_protocolo4'])
     parse.add_argument("--save_path",type=str,default = '../results/accuracies_and_fairness.csv')
-    parse.add_argument("--loging_path", type=str,default ='./extractmetrics.log')
+    parse.add_argument("--logging_path", type=str,default ='./extractmetrics.log')
     args = parse.parse_args()
 
-    logging.basicConfig(filename=args.loging_path,level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(filename=args.logging_path,level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     #static variables
     ethnicities = ['African', 'Asian','Caucasian','Indian']
