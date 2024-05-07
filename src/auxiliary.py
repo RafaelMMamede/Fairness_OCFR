@@ -165,6 +165,6 @@ def DAccSTD_th(matches,similarity_prediction,group_list):
     :param similarity_predictions: cossine similarity between embeddings
     :param group_list: list with information regarding to which group each prediction is part of
     """
-    result = dual_annealing(lambda th: -1*DAccSTD(th, matches=matches,similarity_prediction=similarity_prediction,group_list=group_list), bounds=list(zip([0.], [1.])))
+    result = dual_annealing(lambda th: -1*DAccSTD(th, matches=matches,similarity_prediction=similarity_prediction,group_list=group_list), bounds=list(zip([0.], [1.])), seed=42)
     logging.info(result)
     return result.x
