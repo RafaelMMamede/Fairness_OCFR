@@ -6,6 +6,7 @@ sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
 sys.path.append('../../xSSAB') #REPLACE WITH PATH TO xSSAB
 from auxiliary import create_model, open_results,DAccSTD_th,EER_th, create_model_extended, preprocess_image, ExtendediResNet34, ExtendediResNet50
 from methodology.gradient_calculator import get_gradient # type: ignore
+import tqdm
 
 
 
@@ -43,7 +44,7 @@ if __name__ == '__main__':
         
         matches = []   #0 for not match, 1 for match
 
-        for i,model in enumerate(resnets):
+        for i,model in enumerate(tqdm(resnets)):
             model_cos =extended_resnets[i]
             model.eval()
             model_cos.eval()
