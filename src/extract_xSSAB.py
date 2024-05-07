@@ -44,7 +44,7 @@ if __name__ == '__main__':
         
         matches = []   #0 for not match, 1 for match
 
-        for i,model in enumerate(tqdm(resnets)):
+        for i,model in enumerate(tqdm.tqdm(resnets)):
             model_cos =extended_resnets[i]
             model.eval()
             model_cos.eval()
