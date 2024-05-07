@@ -1,6 +1,7 @@
 import argparse
 import torch 
 import numpy as np
+import os
 import sys 
 sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
 sys.path.append('../../xSSAB') #REPLACE WITH PATH TO xSSAB
@@ -98,6 +99,9 @@ if __name__ == '__main__':
                 gradient_1_2_neg = np.mean(gradient_neg,axis=2)
 
                 combi = gradient_1_2_pos - gradient_1_2_neg
+
+                if not os.path.exists("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] ):
+                    os.makedirs("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] )
 
                 #save results
                 np.save("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] + "/" + str(j)+'.npy' ,combi)
