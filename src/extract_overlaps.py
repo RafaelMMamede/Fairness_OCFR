@@ -38,7 +38,8 @@ if __name__ == '__main__':
 
     ### user arguments
     parse = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parse.add_argument("--models", type=list, default=['iresnet34','iresnet34','iresnet50','iresnet50']) 
+    parse.add_argument("--models", type=list, default=['iresnet34','iresnet34','iresnet50','iresnet50'])
+    parse.add_argument("--backbone_paths", type=list, default=['../models/253682backbone.pth','../models/417378backbone.pth','../models/253682backbone(1).pth','../models/417378backbone(1).pth'])   #must match len with models
     parse.add_argument("--dataset_name",type=str, default="RFW0_RFW1")
     parse.add_argument("--threshold", type=str, default = 'DAccStd')
     parse.add_argument("--importance_mode", type=str, default="important_contributions")
