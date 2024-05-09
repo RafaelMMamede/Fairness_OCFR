@@ -10,7 +10,7 @@ import logging
 
 
 def map_models(alias):    
-    models = ['iresnet34_./Models/253682backbone.pth', 'iresnet34_./Models/417378backbone.pth', 'iresnet50_./Models/253682backbone(1).pth', 'iresnet50_./Models/417378backbone(1).pth']
+    models = ['iresnet34_../models/253682backbone.pth', 'iresnet34_../models/417378backbone.pth', 'iresnet50_../models/253682backbone(1).pth', 'iresnet50_../models/417378backbone(1).pth']
     models_alias = np.array(['Balanced34', 'Global34', 'Balanced50','Global50'],dtype=str)
 
     index = int(np.squeeze(np.where(models_alias==alias)))
