@@ -162,14 +162,14 @@ if __name__ == '__main__':
             overlap_dic[eth]['FNM'] = FNM
 
          
-    writepath = "../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps/' + args.importance_mode + '.json'
+        writepath = "../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps/' + args.importance_mode + '_' + models_alias[i] + '.json'
 
-    if not os.path.exists("../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps'):
-        os.makedirs("../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps')
-    mode = "w+"
+        if not os.path.exists("../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps'):
+            os.makedirs("../results/"+args.dataset_name+ "/" + 'xSSAB_Overlaps')
+        mode = "w+"
 
-    with open(writepath, mode) as outfile: 
-        json.dump(overlap_dic, outfile)
+        with open(writepath, mode) as outfile: 
+            json.dump(overlap_dic, outfile)
 
 
 
