@@ -31,7 +31,8 @@ contributions_func_dict = {'positive_contributions':positive_contributions,
                            'important_contributions':important_contributions}
 
 
-
+def list_of_strings(arg):
+    return arg.split(',')
 
 
 if __name__ == '__main__':
@@ -50,10 +51,7 @@ if __name__ == '__main__':
                                                             "../../../Datasets/RFW/txts/Indian/Indian_pairs.txt"])
 
 
-    parse.add_argument('--occlusion_paths_R',type=list, default=["../../../Datasets/RFW_occ_protocolo1/African/_mask/",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Asian/_mask/",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Caucasian/_mask/",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Indian/_mask/"]) #RIGHT IMAGES
+    parse.add_argument('--occlusion_paths_R',type=list_of_strings, default= "../../../Datasets/RFW_occ_protocolo1/African/_mask/,../../../Datasets/RFW_occ_protocolo1/Asian/_mask/,../../../Datasets/RFW_occ_protocolo1/Caucasian/_mask/,../../../Datasets/RFW_occ_protocolo1/Indian/_mask/") #RIGHT IMAGES
 
     args = parse.parse_args()
 
