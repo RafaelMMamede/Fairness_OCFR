@@ -5,7 +5,7 @@ from auxiliary import create_model, open_results,DAccSTD_th,EER_th
 import cv2
 import json 
 import os
-
+import tqdm
 
 
 def positive_contributions(importance_map,importance_th = .8):
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         overlap_dic ={}
 
 
-        for e,eth in enumerate(ethnicities):
+        for e,eth in enumerate(tqdm.tqdm(ethnicities)):
 
 
             #TM, TNM, FM, FNM
