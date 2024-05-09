@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
                 for j,line in enumerate(lines):
 
-                    importance_map = np.open("../results/"+args.dataset_name+ "/" + eth +"/Right_xSSAB/" + models_alias[i]+ "/" + str(j)+'.npy')
+                    importance_map = np.load("../results/"+args.dataset_name+ "/" + eth +"/Right_xSSAB/" + models_alias[i]+ "/" + str(j)+'.npy')
                     
                     line_list = line.split('\t')
                     if '\n' in line_list[-1]:
