@@ -50,10 +50,10 @@ if __name__ == '__main__':
                                                             "../../../Datasets/RFW/txts/Indian/Indian_pairs.txt"])
 
 
-    parse.add_argument('--occlusion_paths_R',type=list, default=["../../../Datasets/RFW_occ_protocolo1/African/_mask",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Asian/_mask",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Caucasian/_mask",
-                                                            "../../../Datasets/RFW_occ_protocolo1/Indian/_mask"]) #RIGHT IMAGES
+    parse.add_argument('--occlusion_paths_R',type=list, default=["../../../Datasets/RFW_occ_protocolo1/African/_mask/",
+                                                            "../../../Datasets/RFW_occ_protocolo1/Asian/_mask/",
+                                                            "../../../Datasets/RFW_occ_protocolo1/Caucasian/_mask/",
+                                                            "../../../Datasets/RFW_occ_protocolo1/Indian/_mask/"]) #RIGHT IMAGES
 
     args = parse.parse_args()
 
@@ -118,6 +118,7 @@ if __name__ == '__main__':
 
 
                         mask_R = cv2.imread((args.occlusion_paths_R[e] + ind + '/'+ind+'_000'+line_list[2]+'.jpg'),cv2.IMREAD_GRAYSCALE)
+
                         mask_R = np.where(mask_R>=1,1,0) #binarize
 
 
@@ -125,10 +126,10 @@ if __name__ == '__main__':
 
                         overlap = np.sum(np.multiply(mask_R,importance_map_binarized))/np.sum(importance_map_binarized)
 
-                        if similarities[eth][models[i]] >= th:  #TM
+                        if similarities[eth][models[i]][j] >= th:  #TM
                             TM.append(overlap)
 
-                        if similarities[eth][models[i]] < th:  #FNM
+                        if similarities[eth][models[i]][j] < th:  #FNM
                             FNM.append(overlap)
 
 
@@ -147,10 +148,10 @@ if __name__ == '__main__':
 
                         overlap = np.sum(np.multiply(mask_R,importance_map_binarized))/np.sum(importance_map_binarized)
 
-                        if similarities[eth][models[i]] >= th:  #FM
+                        if similarities[eth][models[i]][j] >= th:  #FM
                             FM.append(overlap)
 
-                        if similarities[eth][models[i]] < th:  #TNM
+                        if similarities[eth][models[i]][j] < th:  #TNM
                             TNM.append(overlap)
 
 
