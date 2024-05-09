@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     #static variables
     ethnicities = ['African', 'Asian','Caucasian','Indian']
-    models = ['iresnet34_./Models/253682backbone.pth', 'iresnet34_./Models/417378backbone.pth', 'iresnet50_./Models/253682backbone(1).pth', 'iresnet50_./Models/417378backbone(1).pth']
+    models = ['iresnet34_../models/253682backbone.pth', 'iresnet34_../models/417378backbone.pth', 'iresnet50_../models/253682backbone(1).pth', 'iresnet50_../models/417378backbone(1).pth']
     models_alias = ['Balanced34', 'Global34', 'Balanced50','Global50']
     Datasets = args.datasets
 
