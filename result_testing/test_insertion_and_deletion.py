@@ -5,6 +5,7 @@ import numpy as np
 import json 
 import sys 
 sys.path.append('../../ElasticFace') #REPLACE WITH PATH TO ELASTICFACE
+sys.path.append('../src')
 from auxiliary import create_model, preprocess_image
 import matplotlib.pyplot as plt
 
