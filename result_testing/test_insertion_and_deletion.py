@@ -126,11 +126,11 @@ if __name__ == '__main__':
 
                         #random insertion
                         random_insertion = insertion(im2,insertion_proportion,device,saliency_map=None)
-                        score_random.append(np.float64(get_cossine_sim(im1,random_insertion, resnets[i]).cpu().numpy()[0]))
+                        score_random.append(np.float64(get_cossine_sim(im1,random_insertion.type(torch.FloatTensor), resnets[i]).cpu().numpy()[0]))
 
                         #importance map insertion
                         importance_insertion = insertion(im2,insertion_proportion,device,saliency_map=importance_map)
-                        score_importance.append(np.float64(get_cossine_sim(im1,importance_insertion, resnets[i]).cpu().numpy()[0]))
+                        score_importance.append(np.float64(get_cossine_sim(im1,importance_insertion.type(torch.FloatTensor), resnets[i]).cpu().numpy()[0]))
 
                     plt.plot(args.proportion_list,score_random,label = 'random')
                     plt.plot(args.proportion_list,score_importance,label = 'salency_map')
