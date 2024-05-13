@@ -32,7 +32,7 @@ def insertion(image_tensor,insertion_proportion,device,saliency_map=None):
     w,h = image_tensor.shape[-2],image_tensor.shape[-1]
 
 
-    if saliency_map== None:
+    if saliency_map is None:
         flattened_insertion = np.concatenate((np.ones(int(w*h*insertion_proportion)),np.zeros(int(w*h*(1-insertion_proportion)))))
         np.random.shuffle(flattened_insertion)
 
