@@ -11,3 +11,6 @@ Important aspects of the repository:
  - ./src/ contains the executables used (auxiliary.py - collection of auxiliary functions; fairness_metrics.py - auxiliary file with implementation of fairness metrics; extract_similarities.py - produces a json with the cossine similarity results a .npy file with the true labels in each scenario; extract_metrics.py - extracts the fairness metrics; extract_xSSAB.py was used for extracting the importance maps; extract_overlaps.py calculates the overlap of importance pixels and the occlusion masks)
  - enviornment.yml contains the yml file of the used environment. 
 
+
+Replication Procedure for RFW1 and RFW4 (WIP):
+
