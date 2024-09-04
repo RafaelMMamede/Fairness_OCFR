@@ -92,19 +92,19 @@ if __name__ == '__main__':
                 im1.requires_grad_(True)
                 im2.requires_grad_(True)
 
-                gradient_pos = get_gradient(im2, im1, model_cos, model, 1, 'Balanced34', th)
-                gradient_neg = get_gradient(im2, im1, model_cos, model, 2, 'Balanced34', th)
+                gradient_pos = get_gradient(im1, im2, model_cos, model, 1, 'Balanced34', th)
+                gradient_neg = get_gradient(im1, im2, model_cos, model, 2, 'Balanced34', th)
 
                 gradient_1_2_pos = np.mean(gradient_pos,axis=2)
                 gradient_1_2_neg = np.mean(gradient_neg,axis=2)
 
                 combi = gradient_1_2_pos - gradient_1_2_neg
 
-                if not os.path.exists("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Left_xSSAB/" + models_alias[i] ):
-                    os.makedirs("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Left_xSSAB/" + models_alias[i] )
+                if not os.path.exists("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] ):
+                    os.makedirs("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] )
 
                 #save results
-                np.save("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Left_xSSAB/" + models_alias[i] + "/" + str(j)+'.npy' ,combi)
+                np.save("../results/"+args.dataset_name+ "/" + args.ethnicity +"/Right_xSSAB/" + models_alias[i] + "/" + str(j)+'.npy' ,combi)
 
 
 
