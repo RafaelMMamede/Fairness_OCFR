@@ -1,0 +1,18 @@
+#ignore all Datasets
+RFW/
+RFW1_uncentered_v2/
+RFW4_uncentered_v2/
+RFW1_v2/
+RFW4_v2/
+Occlusions/
+
+
+#ignore large result files
+results/
+
+#ignore all logs
+*.log
+
+#ignore pychache
+recreate_occluded/__pycache__/
+src/__pycache__/
