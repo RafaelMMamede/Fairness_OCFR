@@ -6,9 +6,15 @@ RFW1_v2/
 RFW4_v2/
 Occlusions/
 
+#ignore model weights
+models/
+
 
 #ignore large result files
 results/
+
+#ignore zips
+*.zip
 
 #ignore all logs
 *.log
