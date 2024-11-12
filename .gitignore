@@ -7,11 +7,11 @@ RFW4_v2/
 Occlusions/
 
 #ignore model weights
-models/
+models/*
 
 
 #ignore large result files
-results/
+results/*
 
 #ignore zips
 *.zip
